@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import axios from "axios";
-import schema from "../middleware/validation";
+// import schema from "../middleware/validation";
 export const getAddress = async (req: Request, res: Response) => {
   try {
     const tomtomKey: string | any = process.env.KEY;

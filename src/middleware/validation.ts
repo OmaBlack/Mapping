@@ -1,8 +1,16 @@
-import express from "express";
 import Joi, { ValidationResult } from "joi";
-
-const schema: any = Joi.object({
-  latitude: Joi.string().required(),
-  longitude: Joi.string().required(),
-});
-export default schema;
+export function validateRequest(response: any) {
+  const schema = Joi.object({
+    originLatitude: Joi.number().min(1).required().label("Origin Latitude"),
+    originLongitude: Joi.number().min(1).required().label("Origin Longitude"),
+    destinationLatitude: Joi.number()
+      .min(1)
+      .required()
+      .label("Destination Latitude"),
+    destinationLongitude: Joi.number()
+      .min(1)
+      .required()
+      .label("Destination Longitude"),
+  });
+  return schema.validate(response);
+}
